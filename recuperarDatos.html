@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+
+    <!--Icono de la aplicacion-->
+    <link rel="icon" type="image/x-icon" href="./img/LogoSerenaMente.png">
+
+    <!--Fuente de Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <!--Iconos de Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!--Estilos personales-->
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style-index.css">
+    <link rel="stylesheet" href="./css/style-quienesSomos.css">
+    <link rel="stylesheet" href="./css/style-registro2.css">
+
+</head>
+
+<body>
+
+    <main>
+        <div class="rectanguloAmarillo">
+            <h1>Recuperación de Datos</h1>
+        </div>
+
+        <div class="principal">
+            <section class="container">
+                <form id="signupForm">
+
+                    <!--PREGUNTA 1-->
+                    <div class="question">
+                        <label for="name">Nombre(s)</label>
+                        <input type="text" name="name" id="name">
+                    </div>
+
+                    <!--PREGUNTA 2-->
+                    <div class="question">
+                        <label for="lastname">Apellido(s)</label>
+                        <input type="text" name="lastname" id="lastname">
+                    </div>
+
+                    <!--PREGUNTA 3-->
+                    <div class="question">
+                        <label for="edad">Edad:</label>
+                        <input type="number" name="edad" id="edad" min="18">
+                    </div>
+
+                    <!--PREGUNTA 4-->
+                    <div class="question">
+                        <label for="estado_civil">Estado civil:</label>
+                        <select name="estado_civil">
+                            <option value="Soltero(a)">Soltero(a)</option>
+                            <option value="Union_libre">Unión libre</option>
+                            <option value="Casado(a)">Casado(a)</option>
+                            <option value="Divorciado(a)">Divorciado(a)</option>
+                            <option value="Separado(a)">Separado(a)</option>
+                            <option value="Viudo(a)">Viudo(a)</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+
+                    <!--PREGUNTA 5-->
+                    <div class="question">
+                        <label for="sexo">Sexo:</label>
+                        <div class="options">
+                            <label><input type="radio" name="sexo" value="Mujer"> Mujer</label>
+                            <label><input type="radio" name="sexo" value="Hombre"> Hombre</label>
+                            <label><input type="radio" name="sexo" value="Prefiero no decir"> Prefiero no decirlo</label>
+                        </div>
+                    </div>
+
+                    <!--PREGUNTA 6-->
+                    <div class="question">
+                        <label for="ocupacion">Ocupación:</label>
+                        <select name="ocupacion">
+                            <option value="Hogar">Encargado(a) del hogar</option>
+                            <option value="Estudiante">Estudiante</option>
+                            <option value="Empleado(a)">Empleado(a)</option>
+                            <option value="Desempleado(a)">Desempleado(a)</option>
+                            <option value="Autoempleo">Autoempleo</option>
+                            <option value="Profesionista">Profesionista</option>
+                            <option value="Jubilado(a)">Jubilado(a)</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+
+                    <!--PREGUNTA 7-->
+                    <div class="question">
+                        <label for="nivel_estudios">¿Cuál es su nivel de estudios?</label>
+                        <select name="nivel_estudios">
+                            <option value="Ninguno">No estudié</option>
+                            <option value="Primaria">Primaria</option>
+                            <option value="Secundaria">Secundaria</option>
+                            <option value="Preparatoria">Preparatoria</option>
+                            <option value="Licenciatura">Licenciatura</option>
+                            <option value="Maestria">Maestría</option>
+                            <option value="Doctorado">Doctorado</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+
+                    <!--PREGUNTA 8-->
+                    <div class="question">
+                        <label for="email">Número Telefónico</label>
+                        <input type="tel" name="phone" id="phone">
+                    </div>
+
+                    <!--PREGUNTA 9-->
+                    <div class="question">
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" name="email" id="email">
+                    </div>
+
+                    <div class="btn-container">
+                        <input type="submit" class="btn-next_prev" name="signup_submit" id="signUp">
+                    </div>
+
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <script type="module" src="./recuperarDatos.js"></script>
+
+</body>
+
+</html>
