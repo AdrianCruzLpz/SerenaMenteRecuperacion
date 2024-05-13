@@ -27,13 +27,14 @@ document.addEventListener("DOMContentLoaded", function() {
   const educationLevelInput = document.querySelector('select[name="nivel_estudios"]');
   const phoneInput = document.getElementById("phone");
   const emailInput = document.getElementById("email");
-  /*const passwordInput = document.getElementById("pass");
-  const confirmPasswordInput = document.getElementById("confirPass");*/
   const signUpButton = document.getElementById("signUp");
 
   signUpButton.addEventListener("click", (e) => {
     e.preventDefault();
-    registerUser();
+    const formulario = document.getElementById('signupForm');
+    if (validarFormulario(formulario)) {
+      registerUser();
+    }
   });
 
   async function registerUser() {
@@ -55,37 +56,9 @@ document.addEventListener("DOMContentLoaded", function() {
       });
       
       const email = emailInput ? emailInput.value : "";
-      /*const password = passwordInput ? passwordInput.value : "";
-      const confirmPassword = confirmPasswordInput ? confirmPasswordInput.value : "";*/
 
-      /*if (password !== confirmPassword) {
-        alert("Las contraseñas no coinciden");
-        return;
-      }*/
-
-      /*const userCredential = await createUserWithEmailAndPassword(auth, email);
-      const user = userCredential.user;*/
 
       const currentUser = await auth.currentUser;
-
-      /*await sendEmailVerification(user);
-      alert("Se ha enviado un correo de verificación a tu cuenta de email.");
-
-      let verificationInterval;
-      verificationInterval = setInterval(async () => {
-        await reload(user);
-        if (user.emailVerified) {
-          clearInterval(verificationInterval);
-
-          try {
-            await signInWithEmailAndPassword(auth, email, password);
-            alert("Sesión iniciada correctamente");
-            window.location.href = "./evaluacionPrevia.html";
-          } catch (error) {
-            alert("Error al iniciar sesión: " + error.message);
-          }
-        }
-      }, 5000);*/
 
       await setDoc(doc(db, "usuarios", currentUser.uid), {
         nombre,
@@ -99,10 +72,6 @@ document.addEventListener("DOMContentLoaded", function() {
         email,
       });
 
-      /*await setDoc(doc(db, "evaluacionRealizada", user.uid), {
-        evaluacionPreviaRealizada: false,
-      });*/
-
       alert("Datos registrados correctamente");
       window.location.href = "./agradecimiento.html";
 
@@ -112,3 +81,30 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
 });
+
+function validarFormulario(formulario) {
+  const inputs = formulario.querySelectorAll("input, select");
+  for (let input of inputs) {
+    if (input.type !== "submit" && input.type !== "button") {
+      if (input.type === "radio") {
+        const name = input.name;
+        const radios = formulario.querySelectorAll(`input[name='${name}']:checked`);
+        if (radios.length === 0) {
+          alert("Por favor complete todas las preguntas.");
+          return false;
+        }
+      } else if (input.tagName === "SELECT") {
+        if (input.value === "") {
+          alert("Por favor complete todas las preguntas.");
+          return false;
+        }
+      } else {
+        if (!input.value) {
+          alert("Por favor complete todas las preguntas.");
+          return false;
+        }
+      }
+    }
+  }
+  return true;
+}
