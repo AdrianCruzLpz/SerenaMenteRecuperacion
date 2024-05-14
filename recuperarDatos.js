@@ -3,13 +3,13 @@ import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, reload,
 import { getFirestore, setDoc, doc } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA0kLe5l_gNuBwhkOOvBr8RO150dHCU31k",
-  authDomain: "serena-mente.firebaseapp.com",
-  projectId: "serena-mente",
-  storageBucket: "serena-mente.appspot.com",
-  messagingSenderId: "183868385167",
-  appId: "1:183868385167:web:442b02f182fc8a28260dfa",
-  measurementId: "G-LVWYEJBRHE"
+  apiKey: "AIzaSyAnSAUDBaTQQJdcgtu9MFZ2Xpr3oOKNdqw",
+  authDomain: "prueba2-31849.firebaseapp.com",
+  databaseURL: "https://prueba2-31849-default-rtdb.firebaseio.com",
+  projectId: "prueba2-31849",
+  storageBucket: "prueba2-31849.appspot.com",
+  messagingSenderId: "593735540788",
+  appId: "1:593735540788:web:4fa918ce020f5050c66a61"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -96,6 +96,11 @@ function validarFormulario(formulario) {
       } else if (input.tagName === "SELECT") {
         if (input.value === "") {
           alert("Por favor complete todas las preguntas.");
+          return false;
+        }
+      } else if (input.id === "phone") { // Validación para el número telefónico
+        if (input.value.length !== 10) {
+          alert("El número telefónico debe tener 10 dígitos.");
           return false;
         }
       } else {
